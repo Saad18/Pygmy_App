@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Pygmy App</string>
+    <string name="title">Pygmy</string>
+    <string name="true_title" translatable="false">true</string>
+    <string name="false_title" translatable="false">false</string>
+    <string name="previous_button">previous button</string>
+    <string name="next_button">next button</string>
+    <string name="counter_questions">0 out of 100</string>
+    <string name="correct_answer">Correct</string>
+    <string name="wrong_answer">Wrong</string>
+    <string name="hello_there_this_is_where_we_going_to_add_something">Hello there this is where we going to add something...</string>
+</resources>
