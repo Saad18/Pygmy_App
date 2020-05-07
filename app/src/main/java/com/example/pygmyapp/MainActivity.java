@@ -65,6 +65,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         falseButton.setOnClickListener(this);
 
         scoreTextView.setText(MessageFormat.format("Current Score: {0}", String.valueOf(score.getScore())));
+
+
+        //get previous state
+        currentQuestionIndex = prefs.getState();
+        // Log.d("State", "onCreate: " + prefs.getState());
+
         highestScoreTextView.setText(MessageFormat.format("Highest Score:{0}", String.valueOf(prefs.getHighScore())));
 
 
@@ -91,8 +97,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 break;
             case R.id.next_button:
-                currentQuestionIndex = (currentQuestionIndex + 1) % questionList.size();
-                updateQuestion();
+                goNext();
                 break;
             case R.id.true_button:
                 checkAnswer(true);
@@ -168,6 +173,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onAnimationEnd(Animation animation) {
                 cardView.setCardBackgroundColor(Color.WHITE);
+                goNext();
             }
 
             @Override
@@ -191,6 +197,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onAnimationEnd(Animation animation) {
                 cardView.setCardBackgroundColor(Color.WHITE);
+                goNext();
 
             }
 
@@ -202,9 +209,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+    private void goNext() {
+        currentQuestionIndex = (currentQuestionIndex + 1) % questionList.size();
+        updateQuestion();
+    }
+
     @Override
     protected void onPause() {
         prefs.saveHighScore(score.getScore());
+        prefs.setState(currentQuestionIndex);
         super.onPause();
     }
 }

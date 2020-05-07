@@ -16,7 +16,6 @@ import org.json.JSONException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.example.pygmyapp.controller.AppController.TAG;
 
 public class QuestionBank {
     ArrayList<Question> questionArrayList = new ArrayList<>();
